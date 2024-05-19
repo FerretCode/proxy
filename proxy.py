@@ -1,10 +1,11 @@
 import socket
 import threading
 import signal
+import os
 
 run = True
 
-port = 3000
+port = 3000 if os.getenv('PORT') == None else int(os.getenv('PORT'))
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('127.0.0.1', port))
