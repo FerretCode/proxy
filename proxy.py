@@ -5,7 +5,11 @@ import os
 
 run = True
 
+print(os.getenv('PORT'))
+
 port = 3000 if os.getenv('PORT') == None else int(os.getenv('PORT'))
+
+print(port)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('127.0.0.1', port))
