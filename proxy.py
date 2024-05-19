@@ -80,7 +80,7 @@ def get_target_from_request(request: bytes):
 
   return host, port
 
-def handle_stop_signals():
+def handle_stop_signals(signum, frame):
   global run
   run = False
 
