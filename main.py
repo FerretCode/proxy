@@ -60,7 +60,7 @@ def handle_client_request(client: socket.socket):
         client.close()
 
 def get_target_from_request(request: bytes):
-    request = bytes(request.decode("utf-8").lower())
+    request = bytes(request.decode("utf-8").lower(), "utf-8")
     host_string_start = request.find(b'host: ') + len(b'host: ')
     host_string_end = request.find(b'\r\n', host_string_start)
 
