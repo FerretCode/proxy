@@ -35,6 +35,8 @@ def get_socket_data(sock: socket.socket) -> bytes:
     return request
 
 def handle_client_request(client: socket.socket):
+    dest = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
     try:
         request = get_socket_data(client)
         print(f"Received request: {request.decode('utf-8', errors='ignore')}")
@@ -42,7 +44,6 @@ def handle_client_request(client: socket.socket):
         host, port = get_target_from_request(request)
         print(f"Connecting to target {host}:{port}")
 
-        dest = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         dest.connect((host, port))
         dest.sendall(request)
 
